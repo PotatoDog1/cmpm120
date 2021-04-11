@@ -6,9 +6,9 @@ class Play extends Phaser.Scene {
 
     preload() {
         // load images/tile sprites
-        this.load.image("starfield", "assets/starfield.png");
         this.load.image('rocket', 'assets/rocket.png');
         this.load.image('spaceship', 'assets/spaceship.png');
+        this.load.image("starfield", "assets/starfield.png");
 
         // load spritesheet 
         this.load.spritesheet('explosion', 'assets/explosion.png', 
@@ -27,7 +27,7 @@ class Play extends Phaser.Scene {
             game.config.width/2, 
 
             // made a change here
-            game.config.height - borderUISize, 
+            game.config.height - borderUISize - borderPadding, 
             'rocket'
             ).setOrigin(0.5, 0);
         
@@ -39,12 +39,7 @@ class Play extends Phaser.Scene {
             'spaceship',
             0,
             30).setOrigin(0,0);
-        // this.ship2 = new Ship(
-        //     this,
-        //     300, 
-        //     240, 
-        //     'spaceship'
-        // );
+        
         this.ship2 = new Ship (
             this,
             game.config.width + borderUISize * 3,
@@ -156,10 +151,10 @@ class Play extends Phaser.Scene {
         
         this.starfield.tilePositionX -= 4;
         if (!this.gameOver) {
-        this.p1Rocket.update();     //update rocket sprite
-        this.ship1.update();        // update spaceship (x3)
-        this.ship2.update();
-        this.ship3.update();
+            this.p1Rocket.update();     //update rocket sprite
+            this.ship1.update();        // update spaceship (x3)
+            this.ship2.update();
+            this.ship3.update();
         }
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship1)) {
@@ -177,6 +172,7 @@ class Play extends Phaser.Scene {
         
     }
     checkCollision(rocket, ship) {
+        // simple aabb checking
         if(rocket.x + rocket.width > ship.x && 
             rocket.x < ship.x + ship.width && 
             rocket.height + rocket.y > ship.y && 
