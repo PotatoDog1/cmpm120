@@ -177,9 +177,6 @@ class Play extends Phaser.Scene {
             rocket.x < ship.x + ship.width && 
             rocket.height + rocket.y > ship.y && 
             rocket.y < ship.y + ship.height){
-                // ship.alpha = 0;
-                // rocket.reset();
-                // ship.reset();
                 return true;
         } else {
             return false;
