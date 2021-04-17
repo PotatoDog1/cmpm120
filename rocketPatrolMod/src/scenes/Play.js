@@ -27,7 +27,7 @@ class Play extends Phaser.Scene {
             game.config.width/2, 
 
             // made a change here
-            game.config.height - borderUISize - borderPadding, 
+            game.config.height - borderUISize - borderPadding - 20, 
             'rocket'
             ).setOrigin(0.5, 0);
         
@@ -105,7 +105,7 @@ class Play extends Phaser.Scene {
         this.anims.create({
             key: 'explode',
             frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 0, first: 0}),
-            frameRate: 30
+            frameRate: 10
         });
 
         // initialize score
