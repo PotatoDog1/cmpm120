@@ -9,7 +9,9 @@ class Play extends Phaser.Scene {
         this.load.image('rocket', 'assets/rocket.png');
         this.load.image('spaceship', 'assets/spaceship.png');
         this.load.image("starfield", "assets/starfield.png");
-        this.load.image('fastship', 'assets/fastship.png'); //add a fast ship asset here
+        this.load.image('fastship', 'assets/fastship.png');                   // add a fast ship asset here
+        this.load.image('borderleftright', 'assets/borderleftright.png')      // add border asset
+        this.load.image('bordertopdown', 'assets/bordertopdown.png')      // add border asset
 
         // load spritesheet 
         this.load.spritesheet('explosion', 'assets/explosion.png', 
@@ -18,6 +20,7 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        // add bg music
         this.music = this.sound.add('cute_music');
         this.music.play();
         // place tile sprite
@@ -82,35 +85,30 @@ class Play extends Phaser.Scene {
             ).setOrigin(0, 0);
 
         // white borders
-        this.add.rectangle(
+        // top border
+        this.add.image(
             0, 
             0, 
-            game.config.width, 
-            borderUISize, 
-            0xFFFFFF
+            'bordertopdown'
             ).setOrigin(0 ,0);
-        this.add.rectangle(
+        this.add.image(
             0, 
             game.config.height - borderUISize, 
-            game.config.width, 
-            borderUISize, 
-            0xFFFFFF
+            'bordertopdown'
             ).setOrigin(0 ,0);
-        this.add.rectangle(
-            0, 
-            0, 
-            borderUISize, 
-            game.config.height, 
-            0xFFFFFF
-            ).setOrigin(0 ,0);
-        this.add.rectangle(
-            game.config.width - borderUISize, 
-            0, 
-            borderUISize, 
-            game.config.height, 
-            0xFFFFFF
-            ).setOrigin(0 ,0);
-        
+        // left border
+        this.add.image(
+            0,
+            0,
+            'borderleftright'
+        ).setOrigin(0,0);
+        // right border
+        this.add.image(
+            game.config.width - borderUISize,
+            0,
+            'borderleftright'
+        ).setOrigin(0,0);
+
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
