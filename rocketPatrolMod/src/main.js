@@ -29,4 +29,10 @@ let keyF, keyR, keyLEFT, keyRIGHT;
  * Intermediate tier mods
  * Create new artwork for all of the in-game assets (rocket, spaceships, explosion) (20) 
  * Create a new spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points (20)
+ * 
+ * My unexpected struggles:
+ * -it took me an embarrassingly long time to figure out how to link a downloaded font
+ * -it took me a long time to figure out why I couldn't use this.music.stop()
+ * 
+ * 
  */

@@ -10,17 +10,23 @@
             background-color: beige; 
         }
 
+        @font-face {
+            font-family: myFirstFont;
+            src: url(./assets/fonts/double_bubble_shadow-webfont.woff); 
+        }
+
         h1 {
-            font-family: 'doublebubble_shadowregular';
+            font-family: 'myFirstFont';
             /* color:#8a8363; */
         }
+
+        
 
     </style>
    
 </head>
 <body>
     <h1>Rocket Patrol Remake</h1>
-    <link rel="stylesheet" href="./assets/fonts/stylesheet.css">
     <script src="lib/phaser.js"></script>
     <script src="src/prefabs/Rocket.js"></script>
     <script src="src/prefabs/Ship.js"></script>
