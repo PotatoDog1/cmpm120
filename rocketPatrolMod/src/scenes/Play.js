@@ -82,7 +82,6 @@ class Play extends Phaser.Scene {
             0,
             10
             ).setOrigin(0,0);
-
         // cloud borders
         // top border
         this.add.image(
@@ -107,6 +106,11 @@ class Play extends Phaser.Scene {
             0,
             'borderleftright'
         ).setOrigin(0,0);
+        // timer display    
+        this.countDown = new Timer(this,
+            500, 
+            borderUISize + borderPadding * 2, 
+            game.settings.gameTimer);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -147,13 +151,15 @@ class Play extends Phaser.Scene {
 
         // 60-second play clock
         scoreConfig.fixedWidth = 0;
-        this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
+        this.clock = this.time.delayedCall(game.settings.gameTimer - 1000, () => {
             this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize, 'GAME OVER', {
                 fontFamily: 'myFirstFont', fontSize: '50px', align: 'center', color: '#843605', textShadow: '4px, 4px, white'}).setOrigin(0.5);
             this.add.text(game.config.width / 2, game.config.height / 2 + 30, '(R) to Restart\n← for Menu',
-            {fontFamily: 'myFirstFont', fontSize: '28px', color: '#843605', align: 'center',}).setOrigin(0.5);
+                {fontFamily: 'myFirstFont', fontSize: '28px', color: '#843605', align: 'center'}).setOrigin(0.5);
+            this.countDown.reset();
             this.gameOver = true;
             }, null, this);
+        // this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize, this.clock, scoreConfig).setOrigin(0.5);
     }
 
     update() {
@@ -161,12 +167,14 @@ class Play extends Phaser.Scene {
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.music.pause();
             this.music.currentTime = 0;
-            this.scene.restart();
+            this.scene.restart();            
         }
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.music.pause();
             this.music.currentTime = 0;
             this.scene.start("menuScene");
+            
+
         }
 
         this.birds.tilePositionX -= 2.5;
@@ -178,6 +186,8 @@ class Play extends Phaser.Scene {
             this.ship2.update();
             this.ship3.update();
             this.fastShip.update();
+            this.countDown.update();
+
         }
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship1)) {

@@ -40,12 +40,13 @@ class Menu extends Phaser.Scene {
             borderPadding, 'POTATO\nPATROL', {fontFamily: 'myFirstFont', fontSize: 65}).setOrigin(0.5);
         this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize, '←→ to move',
         menuConfig).setOrigin(0.5);
+        // let f = '(F)'.fontcolor('rgb(' + [255, 130, 130].join(',') + ')');
         this.add.text(game.config.width / 2, game.config.height / 2, '(F) to fire',
         menuConfig).setOrigin(0.5);
         
         // changing the menuconfig colors and padding
         menuConfig.color = '#ff8282';
-        menuConfig.backgroundColor = 'white';       // white highlight
+        menuConfig.backgroundColor = 'rgb(' + [255, 255, 255, .8].join(',') + ')';       // white highlight, lowered opacity
         menuConfig.padding = 5;
 
         // novice text
@@ -67,7 +68,8 @@ class Menu extends Phaser.Scene {
             // easy mode
             game.settings = {
                 spaceshipSpeed: 3,
-                gameTimer: 60000
+                gameTimer: 61000,
+                // startTime: Date.now()         // track the start time of this mode
             }
             this.sound.play('sfx_select');
             this.scene.start('playScene');
@@ -76,7 +78,8 @@ class Menu extends Phaser.Scene {
             // hard mode
             game.settings = {
                 spaceshipSpeed: 4,
-                gameTimer: 1000
+                gameTimer: 46000,
+                // startTime: Date.now()         // track the start time of this mode
             }
             this.sound.play('sfx_select');
             this.scene.start('playScene');

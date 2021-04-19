@@ -23,6 +23,8 @@ let keyF, keyR, keyLEFT, keyRIGHT;
  * Implement parallax scrolling (10)
  *      I separated the image of birds that I had from the clouds in the background, the birds
  *      move at a different speed than the clouds.
+ * Display the time remaining (in seconds) on the screen (10)
+ *      I implemented a timer that counts down the time and shows how many seconds are left.
  * 
  * Intermediate tier mods
  * Create a new spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points (20)
