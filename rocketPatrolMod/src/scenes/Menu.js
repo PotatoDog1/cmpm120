@@ -7,9 +7,9 @@ class Menu extends Phaser.Scene {
 
     preload () {
         // load audio
-        this.load.audio('sfx_select', 'assets/blip_select12.wav');
-        this.load.audio('sfx_explosion', 'assets/explosion38.wav');
-        this.load.audio('sfx_rocket', 'assets/rocket_shot.wav');
+        this.load.audio('sfx_select', 'assets/bell_small_001.mp3');
+        this.load.audio('sfx_explosion', 'assets/multimedia_pop_up_alert_tone_3.mp3');     // replaced with media tone
+        this.load.audio('sfx_rocket', 'assets/food_drink_big_bubble_blown_into_glass_through_drinking_straw_1.mp3');       // replaced with blowing bubbles
 
         // background music
         this.load.audio('cute_music', 'assets/bensound-cute.mp3');
@@ -55,7 +55,8 @@ class Menu extends Phaser.Scene {
         // expert text
         this.add.text(game.config.width - borderUISize - borderPadding - 150, game.config.height / 2 + borderUISize + 
             borderPadding * 15, '→ for Expert', menuConfig).setOrigin(0,0);
-    
+            
+        // key input
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
 
@@ -75,7 +76,7 @@ class Menu extends Phaser.Scene {
             // hard mode
             game.settings = {
                 spaceshipSpeed: 4,
-                gameTimer: 45000
+                gameTimer: 1000
             }
             this.sound.play('sfx_select');
             this.scene.start('playScene');
