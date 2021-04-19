@@ -1,3 +1,9 @@
+/**
+ * Student Name: Gillian Yu
+ * Game Name: Potato Patrol
+ * Date: 4/19/21
+ * How long it took: Maybe 3ish days?
+ */
 let config = {
     type: Phaser.CANVAS,
     width: 640,
